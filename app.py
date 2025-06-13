@@ -3,11 +3,17 @@ import pandas as pd
 import numpy as np
 import joblib
 import tensorflow as tf
+from pathlib import Path
 from model import build_autoencoder
 
+# Resolve paths relative to this file so the app works when deployed
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_PATH = BASE_DIR / "autoencoder_keras.h5"
+PREPROCESSOR_PATH = BASE_DIR / "preprocessor.joblib"
+
 # Load model & preprocessor
-model = tf.keras.models.load_model("autoencoder_keras.h5")
-preprocessor = joblib.load("preprocessor.joblib")
+model = tf.keras.models.load_model(MODEL_PATH)
+preprocessor = joblib.load(PREPROCESSOR_PATH)
 threshold = 0.5888  # Adjust based on training results
 
 st.title("Pipeline Anomaly Detection")
