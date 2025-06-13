@@ -4,7 +4,6 @@ import numpy as np
 import joblib
 import tensorflow as tf
 from pathlib import Path
-from model import build_autoencoder
 
 # Resolve paths relative to this file so the app works when deployed
 BASE_DIR = Path(__file__).resolve().parent
